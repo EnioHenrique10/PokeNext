@@ -1,8 +1,21 @@
+// src/pages/components/Card.tsx
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from '../../styles/Card.module.css'
+import styles from '../../styles/Card.module.css';
 
-export default function Card({ pokemon }) {
+
+// Define o tipo para um Pokémon
+interface Pokemon {
+  id: number;
+  name: string;
+}
+
+// Define o tipo para as props do componente Card
+interface CardProps {
+  pokemon: Pokemon;
+}
+
+export default function Card({ pokemon }: CardProps) {
   return (
     <div className={styles.card}>
       <Image
@@ -13,9 +26,10 @@ export default function Card({ pokemon }) {
       />
       <p className={styles.id}>#{pokemon.id}</p>
       <h3 className={styles.title}>{pokemon.name}</h3>
-      <Link href={`/pokemon/${pokemon.id}`}>
-      <h4 className={styles.btn}>Detalhes</h4>
-     </Link>
+      <Link href="/somepage" legacyBehavior>
+      <a className={styles.btn}>Detalhes</a>
+    </Link>
+
     </div>
   );
 }
